@@ -18,6 +18,11 @@ from sklearn.metrics import mean_squared_error
 # fix random seed for reproducibility
 numpy.random.seed(7)
 # load the dataset
-dataframe = pandas.read_csv('final.csv', usecols=[0], engine='python', skipfooter=3)
-dataset = dataframe.values
-print(len(dataset))
+dataset = numpy.loadtxt("dataset.csv", delimiter=",")
+
+
+X = dataset[:,0]
+Y = dataset[:,1]
+
+
+print(Y)
