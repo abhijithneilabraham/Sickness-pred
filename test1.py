@@ -27,14 +27,15 @@ with open('people.csv','r') as csvinput:
         writer = csv.writer(csvoutput, lineterminator='\n')
         reader = csv.reader(csvinput)
 
-        all = []
-        row = next(reader)
-        
-        row.append(0)
-        all.append(row)
-        
-        for j in range(1376):
+        for j in range(1372):
             
+            all = []
+            row = next(reader)
+            print(row)
+            
+            row.append(0)
+            all.append(row)
+        
            
         
 
