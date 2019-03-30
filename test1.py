@@ -8,8 +8,7 @@ Created on Sat Mar 30 22:13:41 2019
 
 import csv
 import random
-lines=[]
-lines2=[]
+
 
 
 with open('people.csv', 'w+') as writeFile:
