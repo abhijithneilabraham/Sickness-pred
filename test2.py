@@ -21,6 +21,3 @@ numpy.random.seed(7)
 dataframe = pandas.read_csv('final.csv', usecols=[0], engine='python', skipfooter=3)
 dataset = dataframe.values
 print(len(dataset))
-dataframe2 = pandas.read_csv('people.csv', usecols=[0], engine='python', skipfooter=3)
-dataset2 = dataframe2.values
-print(len(dataset2))

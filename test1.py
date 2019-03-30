@@ -40,4 +40,21 @@ with open('people.csv','r') as csvinput:
         
 
             writer.writerows(all)
+with open('final.csv','r') as csvinput:
+    with open('output2.csv', 'w') as csvoutput:
+        writer = csv.writer(csvoutput, lineterminator='\n')
+        reader = csv.reader(csvinput)
 
+        for j in range(1372):
+            
+            all = []
+            row = next(reader)
+            print(row)
+            
+            row.append(1)
+            all.append(row)
+        
+           
+        
+
+            writer.writerows(all)
