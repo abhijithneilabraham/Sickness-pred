@@ -38,18 +38,22 @@ Y = dataset[:,1]
 # create model
 model = Sequential()
 #model.add(Dense(12, input_dim=1, activation='relu'))
-n_steps=10
+n_steps=1
 n_features=1
 print(X)
-
-X = X.reshape((X.shape[0], X.shape[1], n_features))
+x=array(X)
+x1 = x.reshape((len(x), n_steps, n_features))
 
 model.add(LSTM(50, activation='relu', input_shape=(n_steps, n_features)))
+
+
 model.add(Dense(1, activation='sigmoid'))
+
 # Compile model
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
 # Fit the model
-model.fit(X, Y, epochs=150, batch_size=10)
+model.fit(x1, Y, epochs=150, batch_size=10)
 # evaluate the model
 scores = model.evaluate(X, Y)
 print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
