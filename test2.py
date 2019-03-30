@@ -46,7 +46,7 @@ x1 = x.reshape((len(x), n_steps, n_features))
 
 model.add(LSTM(50, activation='relu', input_shape=(n_steps, n_features)))
 
-
+model.add(Dense(8, init='uniform', activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
 
 # Compile model
@@ -55,9 +55,9 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 # Fit the model
 model.fit(x1, Y, epochs=150, batch_size=10)
 # evaluate the model
-scores = model.evaluate(X, Y)
+scores = model.evaluate(x1, Y)
 print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
-predictions = model.predict(X)
+predictions = model.predict(x1)
 # round predictions
 rounded = [round(x[0]) for x in predictions]
 print(rounded)
