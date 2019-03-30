@@ -10,16 +10,16 @@ import csv
 import random
 lines=[]
 lines2=[]
-for i in range(0,10):
-    lines.append(random.randint(920,970))
-print(lines)
-line=[lines,[0]]
-csv.register_dialect("comma", delimiter=",")
+
 
 with open('people.csv', 'w+') as writeFile:
-    writer = csv.writer(writeFile,dialect="comma")
+    writer = csv.writer(writeFile)
+    for i in range(0,1372):
+        
+        line=[[random.randint(920,970)]]
+        
   
-    writer.writerows(line)
-   
+        writer.writerows(line)
+        
 
 
