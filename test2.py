@@ -5,7 +5,7 @@ Created on Sat Mar 30 22:18:10 2019
 
 @author: abhijithneilabraham
 """
-from numpy import array
+from numpy import array #
 import matplotlib.pyplot as plt
 import pandas
 import math
@@ -16,9 +16,10 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error
 
 # fix random seed for reproducibility
-numpy.random.seed(7)
+numpy.random.seed(42)
 # load the dataset
 dataset = numpy.loadtxt("dataset.csv", delimiter=",")
+
 X = dataset[:,0]
 Y = dataset[:,1]
 # create model
@@ -32,6 +33,7 @@ x1 = x.reshape((len(x), n_steps, n_features))
 
 model.add(LSTM(50, activation='relu', input_shape=(n_steps, n_features)))
 
+model.add(Dense(20, init='uniform', activation='relu'))
 model.add(Dense(8, init='uniform', activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
 

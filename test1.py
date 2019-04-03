@@ -18,10 +18,7 @@ with open('people.csv', 'w+') as writeFile:
         line=[[random.randint(920,970)]]
         
   
-        writer.writerows(line)
-for i in range(0,1376):
-    x.append('0')
-        
+        writer.writerows(line)        
 with open('people.csv','r') as csvinput:
     with open('output.csv', 'w') as csvoutput:
         writer = csv.writer(csvoutput, lineterminator='\n')
