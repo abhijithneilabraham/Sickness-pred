@@ -5,8 +5,7 @@ Created on Sat Mar 30 22:18:10 2019
 
 @author: abhijithneilabraham
 """
-from numpy import array #
-import matplotlib.pyplot as plt
+from numpy import array 
 import pandas
 import math
 from keras.models import Sequential
@@ -41,7 +40,7 @@ model.add(Dense(1, activation='sigmoid'))
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 # Fit the model
-model.fit(x1, Y, epochs=150, batch_size=10)
+model.fit(x1, Y, epochs=10, batch_size=10)
 # evaluate the model
 scores = model.evaluate(x1, Y)
 print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
@@ -49,3 +48,18 @@ predictions = model.predict(x1)
 # round predictions
 rounded = [round(x[0]) for x in predictions]
 print(rounded)
+'''
+The following part of program plots the EMG signals
+'''
+import csv
+import numpy
+from random import shuffle
+import matplotlib.pyplot as plt
+patients=['anas.csv','bristo.csv','christy.csv','raees.csv','suresh.csv','abnormal.csv']
+for i in patients:
+    data=numpy.loadtxt(i, delimiter=",")
+    print('------------------------------------------------------')
+    print(i.strip('csv'))
+    plt.plot(data)
+    plt.ylabel('EMG Signal')
+    plt.show()
