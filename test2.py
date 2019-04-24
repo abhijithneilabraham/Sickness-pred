@@ -32,7 +32,7 @@ print(X)
 x=array(X)
 x1 = x.reshape((len(x), n_steps, n_features))
 
-model.add(LSTM(4, activation='relu',kernel_initializer='random_normal', input_shape=(n_steps, n_features)))
+model.add(LSTM(10, activation='relu',kernel_initializer='random_normal', input_shape=(n_steps, n_features)))
 
 model.add(Dense(4, kernel_initializer='random_normal', activation='relu'))
 	# Compile model
@@ -43,18 +43,32 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 
 
 # Fit the model
-model.fit(x1, Y, epochs=5, batch_size=10)
+model.fit(x1, Y, epochs=20, batch_size=10)
 # evaluate the model
 scores = model.evaluate(x1, Y)
 print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
-test1 = numpy.loadtxt("suresh.csv", delimiter=",")
+test1 = numpy.loadtxt("abnormal.csv", delimiter=",")
 predict_test=test1.reshape((len(test1), n_steps, n_features))
 print(predict_test)
 predictions = model.predict(predict_test)
 # round predictions
 print(predictions)
-rounded = [round(x2[0]) for x2 in predictions]
-print('the results are',rounded)
+    
+z=0
+
+
+for j in predictions:
+    if j>0.9:
+        z+=1
+percent=z/(len(predictions))
+print('Percentage of abnormality is',percent*100)
+
+
+    
+
+    
+#rounded = [round(x2[0]) for x2 in predictions]
+#print('the results are',rounded)
 '''
 The following part of program plots the EMG signals
 '''
