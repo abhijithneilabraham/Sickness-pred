@@ -49,10 +49,9 @@ scores = model.evaluate(x1, Y)
 print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
 test1 = numpy.loadtxt("abnormal.csv", delimiter=",")
 predict_test=test1.reshape((len(test1), n_steps, n_features))
-print(predict_test)
+
 predictions = model.predict(predict_test)
 # round predictions
-print(predictions)
     
 z=0
 
