@@ -8,6 +8,7 @@ Created on Sat Mar 30 22:18:10 2019
 from numpy import array 
 import pandas
 import math
+import numpy
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import LSTM
