@@ -59,7 +59,8 @@ patients=['anas.csv','bristo.csv','christy.csv','raees.csv','suresh.csv','abnorm
 for i in patients:
     data=numpy.loadtxt(i, delimiter=",")
     print('------------------------------------------------------')
-    print(i.strip('csv'))
+    i=i[:-4]
+    print(i)
     plt.plot(data)
     plt.ylabel('EMG Signal')
     plt.show()
