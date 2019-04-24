@@ -17,7 +17,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error
 
 # fix random seed for reproducibility
-numpy.random.seed(7)
+numpy.random.seed(42)
 # load the dataset
 dataset = numpy.loadtxt("dataset.csv", delimiter=",")
 
@@ -32,9 +32,9 @@ print(X)
 x=array(X)
 x1 = x.reshape((len(x), n_steps, n_features))
 
-model.add(LSTM(60, activation='relu', input_shape=(n_steps, n_features)))
+model.add(LSTM(4, activation='relu',kernel_initializer='random_normal', input_shape=(n_steps, n_features)))
 
-model.add(Dense(40, kernel_initializer='normal', activation='relu'))
+model.add(Dense(4, kernel_initializer='random_normal', activation='relu'))
 	# Compile model
 model.add(Dense(1, activation='sigmoid'))
 
@@ -47,13 +47,14 @@ model.fit(x1, Y, epochs=5, batch_size=10)
 # evaluate the model
 scores = model.evaluate(x1, Y)
 print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
-test1 = numpy.loadtxt("abnormal.csv", delimiter=",")
+test1 = numpy.loadtxt("suresh.csv", delimiter=",")
 predict_test=test1.reshape((len(test1), n_steps, n_features))
 print(predict_test)
 predictions = model.predict(predict_test)
 # round predictions
+print(predictions)
 rounded = [round(x2[0]) for x2 in predictions]
-print(rounded)
+print('the results are',rounded)
 '''
 The following part of program plots the EMG signals
 '''
@@ -62,12 +63,14 @@ import numpy
 from random import shuffle
 import matplotlib.pyplot as plt
 patients=['anas.csv','bristo.csv','christy.csv','raees.csv','suresh.csv','abnormal.csv']
+s=20
 for i in patients:
     data=numpy.loadtxt(i, delimiter=",")
     print('------------------------------------------------------')
     i=i[:-4]
     print('patient name:',i)
-    print('age=',random.randint(20,40))
+    s+=5
+    print('age=',s)
     
     plt.plot(data)
     plt.ylabel('EMG Signal')
