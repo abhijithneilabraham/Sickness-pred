@@ -43,10 +43,13 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 
 
 # Fit the model
-model.fit(x1, Y, epochs=20, batch_size=10)
+model.fit(x1, Y, epochs=1, batch_size=10)
 # evaluate the model
 scores = model.evaluate(x1, Y)
 print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
+'''
+for attempting different test files
+'''
 test1 = numpy.loadtxt("abnormal.csv", delimiter=",")
 predict_test=test1.reshape((len(test1), n_steps, n_features))
 
