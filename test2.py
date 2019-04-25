@@ -50,6 +50,7 @@ print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
 '''
 for attempting different test files
 '''
+'''
 test1 = numpy.loadtxt("abnormal.csv", delimiter=",")
 predict_test=test1.reshape((len(test1), n_steps, n_features))
 
@@ -64,9 +65,7 @@ for j in predictions:
         z+=1
 percent=z/(len(predictions))
 print('Percentage of abnormality is',percent*100)
-
-
-    
+''' 
 
     
 #rounded = [round(x2[0]) for x2 in predictions]
@@ -91,3 +90,17 @@ for i in patients:
     plt.plot(data)
     plt.ylabel('EMG Signal')
     plt.show()
+   
+    predict_test=data.reshape((len(data), n_steps, n_features))
+    
+    predictions = model.predict(predict_test)
+    # round predictions
+        
+    z=0
+    
+    
+    for j in predictions:
+        if j>0.9:
+            z+=1
+    percent=z/(len(predictions))
+    print('Percentage of abnormality is',percent*100)
